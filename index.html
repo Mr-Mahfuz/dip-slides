@@ -2,9 +2,14 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <title>DIP Slide Deck | Slides 7 & 8 | Frequency Domain & Image Restoration</title>
 <meta name="description" content="Slide-by-slide interactive study guide for Digital Image Processing: Frequency Domain Filtering (Slide 7) and Image Restoration & Noise Removal (Slide 8).">
+
+<!-- Mobile App Capable Meta Tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#ffffff" id="theme-color-meta">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,7 +81,7 @@ MathJax = {
   --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
 }
 
-/* ─── OPTIONAL DARK THEME (TOGGLEABLE) ─── */
+/* ─── OPTIONAL DARK THEME ─── */
 [data-theme="dark"] {
   --bg-primary: #0a0c16;
   --bg-secondary: #111424;
@@ -143,6 +148,7 @@ body {
   overflow-x: hidden;
   transition: background-color 0.2s ease, color 0.2s ease;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ─── TOP PROGRESS BAR ─── */
@@ -164,49 +170,52 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 16px;
   z-index: 900;
   box-shadow: var(--shadow-sm);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 [data-theme="dark"] .top-control-bar {
-  background: rgba(17, 20, 36, 0.94);
+  background: rgba(17, 20, 36, 0.95);
 }
 
 .top-bar-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .brand-badge {
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 15px;
   background: linear-gradient(135deg, #1d4ed8, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .category-pill {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.6px;
-  padding: 3px 10px;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
   border-radius: 20px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .s7-tag {
   background: var(--accent-blue-light);
@@ -222,43 +231,49 @@ body {
 .top-bar-center {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .slide-counter-badge {
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--text-primary);
   background: var(--bg-secondary);
-  padding: 5px 14px;
+  padding: 5px 12px;
   border-radius: 20px;
   border: 1px solid var(--border-strong);
   white-space: nowrap;
+  cursor: pointer;
+}
+.slide-counter-badge:hover {
+  border-color: var(--accent-blue);
+  background: var(--accent-blue-light);
+  color: var(--accent-blue-text);
 }
 
 .jump-form {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   background: var(--bg-card);
-  padding: 3px 8px;
+  padding: 2px 6px;
   border-radius: 8px;
   border: 1px solid var(--border-strong);
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
 .jump-form label {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--text-muted);
 }
 .jump-input {
-  width: 44px;
+  width: 40px;
   background: transparent;
   border: none;
   color: var(--text-primary);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   text-align: center;
   outline: none;
@@ -272,38 +287,38 @@ body {
   background: var(--accent-blue);
   color: #fff;
   border: none;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 11.5px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 .jump-btn:hover {
   background: #1d4ed8;
-  transform: translateY(-1px);
 }
 
 .top-bar-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .nav-icon-btn {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   color: var(--text-primary);
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.15s ease;
   box-shadow: var(--shadow-sm);
+  white-space: nowrap;
 }
 .nav-icon-btn:hover {
   background: var(--bg-secondary);
@@ -327,22 +342,22 @@ body {
 .nav-icon-btn.primary:hover {
   opacity: 0.95;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
 .theme-toggle-btn {
   background: var(--bg-secondary);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   color: var(--text-primary);
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   transition: all 0.15s ease;
+  flex-shrink: 0;
 }
 .theme-toggle-btn:hover {
   border-color: var(--accent-blue);
@@ -351,16 +366,17 @@ body {
 
 /* ─── SLIDE CONTAINER ─── */
 .presentation-container {
-  margin-top: 64px;
-  min-height: calc(100vh - 64px);
+  margin-top: 60px;
+  min-height: calc(100vh - 60px);
   padding-bottom: 74px;
+  touch-action: pan-y;
 }
 
 .presentation-slide {
   display: none;
   max-width: 1040px;
   margin: 0 auto;
-  padding: 36px 24px 44px 24px;
+  padding: 32px 20px 40px 20px;
   animation: slideFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -389,19 +405,19 @@ body.mode-scroll .presentation-slide {
 
 /* ─── SLIDE HEADER BLOCK ─── */
 .slide-title-block {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .slide-meta-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .slide-num-pill {
   font-family: 'Outfit', sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: var(--text-muted);
   letter-spacing: 0.5px;
@@ -409,16 +425,16 @@ body.mode-scroll .presentation-slide {
 
 .slide-h2 {
   font-family: 'Outfit', sans-serif;
-  font-size: 27px;
+  font-size: 26px;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.3;
 }
 
 .slide-subtitle {
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--text-secondary);
-  margin-top: 6px;
+  margin-top: 4px;
   line-height: 1.5;
 }
 
@@ -427,9 +443,9 @@ body.mode-scroll .presentation-slide {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 24px 28px;
+  padding: 22px 26px;
   box-shadow: var(--shadow-sm);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   transition: all 0.2s ease;
 }
 .card:hover {
@@ -441,7 +457,7 @@ body.mode-scroll .presentation-slide {
 
 .card h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 12px;
@@ -450,7 +466,7 @@ body.mode-scroll .presentation-slide {
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 18px;
 }
 @media (max-width: 768px) {
   .grid-2 { grid-template-columns: 1fr; }
@@ -465,15 +481,16 @@ body.mode-scroll .presentation-slide {
   .grid-3 { grid-template-columns: 1fr; }
 }
 
-/* ─── FORMULA BOX (CLEAN STUDY STYLE) ─── */
+/* ─── FORMULA BOX ─── */
 .formula-box {
   background: var(--accent-blue-light);
   border: 1px solid var(--accent-blue-border);
   border-left: 4px solid var(--accent-blue);
   border-radius: 10px;
-  padding: 16px 20px;
-  margin: 14px 0;
+  padding: 14px 18px;
+  margin: 12px 0;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .s8-formula {
   background: var(--accent-purple-light);
@@ -489,56 +506,37 @@ body.mode-scroll .presentation-slide {
   margin-bottom: 6px;
 }
 
-/* ─── CALLOUTS (VIBRANT LIGHT CONTRAST) ─── */
+/* ─── CALLOUTS ─── */
 .callout {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: flex-start;
-  padding: 14px 18px;
+  padding: 14px 16px;
   border-radius: 10px;
   margin: 14px 0;
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.6;
 }
-.callout-icon { font-size: 20px; flex-shrink: 0; }
-.callout-blue {
-  background: var(--accent-blue-light);
-  border: 1px solid var(--accent-blue-border);
-  color: #1e3a8a;
-}
+.callout-icon { font-size: 18px; flex-shrink: 0; }
+.callout-blue { background: var(--accent-blue-light); border: 1px solid var(--accent-blue-border); color: #1e3a8a; }
 [data-theme="dark"] .callout-blue { color: #c4d9ff; }
-
-.callout-purple {
-  background: var(--accent-purple-light);
-  border: 1px solid var(--accent-purple-border);
-  color: #581c87;
-}
+.callout-purple { background: var(--accent-purple-light); border: 1px solid var(--accent-purple-border); color: #581c87; }
 [data-theme="dark"] .callout-purple { color: #e1ccff; }
-
-.callout-green {
-  background: var(--accent-green-light);
-  border: 1px solid var(--accent-green-border);
-  color: #064e3b;
-}
+.callout-green { background: var(--accent-green-light); border: 1px solid var(--accent-green-border); color: #064e3b; }
 [data-theme="dark"] .callout-green { color: #c0f7d5; }
-
-.callout-orange {
-  background: var(--accent-orange-light);
-  border: 1px solid var(--accent-orange-border);
-  color: #78350f;
-}
+.callout-orange { background: var(--accent-orange-light); border: 1px solid var(--accent-orange-border); color: #78350f; }
 [data-theme="dark"] .callout-orange { color: #ffd6b8; }
 
-/* ─── CHIPS / PILLS ─── */
+/* ─── CHIPS ─── */
 .key-chips {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 .chip {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 12px;
 }
 .chip-blue { background: var(--accent-blue-light); color: var(--accent-blue-text); border: 1px solid var(--accent-blue-border); }
@@ -548,7 +546,7 @@ body.mode-scroll .presentation-slide {
 .chip-pink { background: var(--accent-pink-light); color: var(--accent-pink-text); border: 1px solid var(--accent-pink-border); }
 .chip-cyan { background: var(--accent-cyan-light); color: #0369a1; border: 1px solid var(--accent-cyan-border); }
 
-/* ─── SLIDE IMAGES (SEAMLESS FIGURE DISPLAY) ─── */
+/* ─── SLIDE IMAGES ─── */
 .slide-img-wrap {
   background: #ffffff;
   border: 1px solid var(--border);
@@ -569,36 +567,43 @@ body.mode-scroll .presentation-slide {
   background: #ffffff;
 }
 .slide-img-caption {
-  padding: 10px 14px;
+  padding: 8px 12px;
   background: var(--bg-subtle);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-secondary);
   border-top: 1px solid var(--border);
   line-height: 1.5;
 }
 
-/* ─── TABLES ─── */
+/* ─── RESPONSIVE TABLES ─── */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 14px 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13.5px;
-  margin: 14px 0;
-  background: var(--bg-card);
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--border);
+  font-size: 13px;
+  min-width: 540px;
 }
 .comparison-table th {
   background: var(--bg-secondary);
   color: var(--text-primary);
   font-weight: 700;
   text-align: left;
-  padding: 11px 16px;
+  padding: 10px 14px;
   border-bottom: 2px solid var(--border);
   font-family: 'Outfit', sans-serif;
+  white-space: nowrap;
 }
 .comparison-table td {
-  padding: 10px 16px;
+  padding: 9px 14px;
   border-bottom: 1px solid var(--border);
   color: var(--text-secondary);
 }
@@ -612,9 +617,9 @@ body.mode-scroll .presentation-slide {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   color: var(--text-primary);
-  padding: 8px 14px;
+  padding: 7px 12px;
   border-radius: 8px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -624,27 +629,26 @@ body.mode-scroll .presentation-slide {
   background: var(--accent-blue-light);
   border-color: var(--accent-blue);
   color: var(--accent-blue-text);
-  transform: translateY(-1px);
 }
 
-/* ─── 7x7 NUMERICAL WORKSHOP (PRISTINE NOTEBOOK LOOK) ─── */
+/* ─── 7x7 NUMERICAL WORKSHOP ─── */
 .grid-7x7-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
-  margin: 16px 0;
+  margin: 14px 0;
 }
 .grid-7x7 {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  gap: 5px;
   background: var(--bg-secondary);
-  padding: 16px;
+  padding: 12px;
   border-radius: 12px;
   border: 1px solid var(--border-strong);
   box-shadow: var(--shadow-sm);
-  max-width: 480px;
+  max-width: 460px;
   width: 100%;
 }
 .cell-7x7 {
@@ -657,15 +661,14 @@ body.mode-scroll .presentation-slide {
   border: 1px solid var(--border);
   border-radius: 6px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--text-primary);
   transition: all 0.15s ease;
   user-select: none;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
 .cell-coord {
-  font-size: 8px;
+  font-size: 7.5px;
   color: var(--text-muted);
   font-weight: 500;
   margin-top: 1px;
@@ -673,9 +676,9 @@ body.mode-scroll .presentation-slide {
 .cell-7x7.in-window {
   border-color: var(--accent-blue);
   background: var(--accent-blue-light);
-  transform: scale(1.04);
+  transform: scale(1.03);
   z-index: 2;
-  box-shadow: 0 0 10px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.25);
 }
 .cell-7x7.cell-center {
   border-width: 2px;
@@ -684,106 +687,99 @@ body.mode-scroll .presentation-slide {
   background: var(--accent-pink-light) !important;
   border-color: var(--accent-pink) !important;
   color: var(--accent-pink-text) !important;
-  box-shadow: 0 0 12px rgba(225, 29, 72, 0.4) !important;
+  box-shadow: 0 0 10px rgba(225, 29, 72, 0.35) !important;
 }
 .cell-7x7.cell-pepper {
   background: var(--accent-purple-light) !important;
   border-color: var(--accent-purple) !important;
   color: var(--accent-purple-text) !important;
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.4) !important;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.35) !important;
 }
 .solver-tabs {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .solver-tab-btn {
-  padding: 10px 18px;
+  padding: 9px 16px;
   border-radius: 8px;
   border: 1px solid var(--border-strong);
   background: var(--bg-card);
   color: var(--text-primary);
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12.5px;
   cursor: pointer;
   transition: all 0.15s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   box-shadow: var(--shadow-sm);
 }
 .solver-tab-btn:hover {
   border-color: var(--accent-blue);
   background: var(--bg-secondary);
-  transform: translateY(-1px);
 }
 .solver-tab-btn.active-salt {
   background: var(--accent-pink-light);
   border-color: var(--accent-pink);
   color: var(--accent-pink-text);
-  box-shadow: 0 0 12px rgba(225, 29, 72, 0.2);
 }
 .solver-tab-btn.active-pepper {
   background: var(--accent-purple-light);
   border-color: var(--accent-purple);
   color: var(--accent-purple-text);
-  box-shadow: 0 0 12px rgba(124, 58, 237, 0.2);
 }
 .calculation-result-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
 }
 .calc-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   box-shadow: var(--shadow-sm);
   transition: transform 0.15s ease, border-color 0.15s ease;
 }
-.calc-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
 .calc-card-title {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .calc-card-formula {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-secondary);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   font-family: 'JetBrains Mono', monospace;
 }
 .calc-card-val {
-  font-size: 21px;
+  font-size: 19px;
   font-weight: 800;
   font-family: 'Outfit', sans-serif;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 .calc-card-desc {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-muted);
   line-height: 1.4;
 }
 
-/* ─── QUIZ STYLES (CLEAN INTERACTIVE) ─── */
+/* ─── QUIZ STYLES ─── */
 .question-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 22px;
+  padding: 18px 20px;
   box-shadow: var(--shadow-sm);
   transition: border-color 0.15s ease;
 }
@@ -791,7 +787,7 @@ body.mode-scroll .presentation-slide {
 .question-card.wrong { border-color: var(--accent-pink); background: var(--accent-pink-light); }
 
 .q-num {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -799,11 +795,11 @@ body.mode-scroll .presentation-slide {
   margin-bottom: 6px;
 }
 .q-text {
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 14px;
-  line-height: 1.5;
+  margin-bottom: 12px;
+  line-height: 1.45;
 }
 .q-options {
   display: flex;
@@ -814,9 +810,9 @@ body.mode-scroll .presentation-slide {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 11px 16px;
+  padding: 10px 14px;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   text-align: left;
   cursor: pointer;
@@ -826,7 +822,6 @@ body.mode-scroll .presentation-slide {
   border-color: var(--accent-blue);
   background: var(--accent-blue-light);
   color: var(--accent-blue-text);
-  transform: translateX(4px);
 }
 .q-option.selected-correct {
   background: var(--accent-green-light) !important;
@@ -846,10 +841,10 @@ body.mode-scroll .presentation-slide {
   font-weight: 700;
 }
 .q-feedback {
-  margin-top: 12px;
-  padding: 12px 16px;
+  margin-top: 10px;
+  padding: 10px 14px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.5;
   display: none;
 }
@@ -861,20 +856,15 @@ body.mode-scroll .presentation-slide {
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   border: none;
-  padding: 12px 28px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 700;
   cursor: pointer;
   display: inline-block;
   transition: all 0.15s ease;
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-}
-.quiz-submit-btn:hover {
-  opacity: 0.95;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
 }
 
 /* ─── FIXED BOTTOM NAV BAR ─── */
@@ -884,41 +874,42 @@ body.mode-scroll .presentation-slide {
   left: 0;
   right: 0;
   height: 54px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 16px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
   z-index: 850;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
 }
 [data-theme="dark"] .bottom-floating-bar {
-  background: rgba(17, 20, 36, 0.94);
+  background: rgba(17, 20, 36, 0.95);
 }
 
 .bottom-center {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .key-hint {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 .key-badge {
   background: var(--bg-secondary);
   border: 1px solid var(--border-strong);
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 4px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   color: var(--text-secondary);
 }
@@ -936,7 +927,7 @@ body.mode-scroll .presentation-slide {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
 }
 .index-drawer-overlay.open {
   display: flex;
@@ -959,7 +950,7 @@ body.mode-scroll .presentation-slide {
   to { transform: scale(1); opacity: 1; }
 }
 .index-drawer-header {
-  padding: 18px 24px;
+  padding: 16px 20px;
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
@@ -968,7 +959,7 @@ body.mode-scroll .presentation-slide {
 }
 .index-drawer-header h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   margin: 0;
 }
@@ -983,27 +974,26 @@ body.mode-scroll .presentation-slide {
 }
 .close-drawer-btn:hover { color: var(--text-primary); }
 .index-drawer-body {
-  padding: 20px 24px;
+  padding: 16px 20px;
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 .index-slide-item {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   cursor: pointer;
   transition: all 0.15s ease;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 .index-slide-item:hover {
   border-color: var(--accent-blue);
   background: var(--accent-blue-light);
-  transform: translateY(-1px);
 }
 .index-slide-item.active {
   border-color: var(--accent-blue);
@@ -1011,15 +1001,117 @@ body.mode-scroll .presentation-slide {
   box-shadow: 0 0 0 2px var(--accent-blue-border);
 }
 .index-slide-num {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--text-muted);
 }
 .index-slide-title {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.35;
+}
+
+/* ─── COMPREHENSIVE MOBILE OPTIMIZATIONS ─── */
+@media (max-width: 680px) {
+  .top-control-bar {
+    height: 52px;
+    padding: 0 12px;
+  }
+  .brand-badge {
+    font-size: 14px;
+  }
+  .category-pill {
+    display: none; /* Hide category pill in top bar on small mobile to avoid crowd */
+  }
+  .top-bar-center {
+    gap: 4px;
+  }
+  .slide-counter-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+  .jump-form {
+    display: none; /* Accessible in bottom bar and index modal */
+  }
+  .desktop-only-btn {
+    display: none !important;
+  }
+  
+  .presentation-container {
+    margin-top: 52px;
+    padding-bottom: 68px;
+  }
+  .presentation-slide {
+    padding: 18px 12px 30px 12px;
+  }
+  .slide-h2 {
+    font-size: 20px;
+  }
+  .slide-subtitle {
+    font-size: 13px;
+  }
+  
+  .card {
+    padding: 16px 14px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+  .card h3 {
+    font-size: 17px;
+  }
+  
+  .bottom-floating-bar {
+    height: 54px;
+    padding: 0 10px;
+  }
+  .bottom-floating-bar .nav-icon-btn {
+    padding: 8px 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+    border-radius: 8px;
+    min-height: 38px;
+  }
+  .key-hint {
+    display: none; /* Hide keyboard text on mobile */
+  }
+  .mobile-bottom-counter {
+    display: block !important;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .grid-7x7 {
+    padding: 8px;
+    gap: 4px;
+  }
+  .cell-7x7 {
+    font-size: 11px;
+    border-radius: 4px;
+  }
+  .cell-coord {
+    font-size: 6.5px;
+  }
+  .solver-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+  .solver-tab-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+  
+  .index-drawer-body {
+    grid-template-columns: 1fr;
+    padding: 12px 14px;
+  }
+}
+
+.mobile-bottom-counter {
+  display: none;
 }
 </style>
 </head>
@@ -1032,25 +1124,25 @@ body.mode-scroll .presentation-slide {
 <header class="top-control-bar">
   <div class="top-bar-left">
     <div class="brand-badge" onclick="goToSlide(1)">
-      <span>🎓</span> DIP Slides
+      <span>🎓</span> DIP
     </div>
     <span class="category-pill s7-tag" id="top-category-pill">Slide 7</span>
   </div>
 
   <div class="top-bar-center">
-    <div class="slide-counter-badge" id="top-counter-badge">Slide 1 / 38</div>
+    <div class="slide-counter-badge" id="top-counter-badge" onclick="toggleIndexDrawer()" title="Click to view all slides">Slide 1 / 38</div>
     <div class="jump-form">
-      <label for="jump-slide-input">Go to:</label>
+      <label for="jump-slide-input">Go:</label>
       <input type="number" id="jump-slide-input" class="jump-input" min="1" max="38" value="1">
       <button class="jump-btn" onclick="handleJumpSubmit()">Go</button>
     </div>
   </div>
 
   <div class="top-bar-right">
-    <button class="nav-icon-btn" id="btn-prev-top" onclick="prevSlide()" title="Previous Slide (Left Arrow)">◀ Prev</button>
-    <button class="nav-icon-btn primary" id="btn-next-top" onclick="nextSlide()" title="Next Slide (Right Arrow / Space)">Next ▶</button>
+    <button class="nav-icon-btn desktop-only-btn" id="btn-prev-top" onclick="prevSlide()" title="Previous Slide (Left Arrow)">◀ Prev</button>
+    <button class="nav-icon-btn primary desktop-only-btn" id="btn-next-top" onclick="nextSlide()" title="Next Slide (Right Arrow / Space)">Next ▶</button>
     <button class="nav-icon-btn" onclick="toggleIndexDrawer()" title="View All Slides Index">📑 Index</button>
-    <button class="nav-icon-btn" id="btn-mode-toggle" onclick="toggleViewMode()" title="Switch between Slide Deck and Scroll View">👁️ Slides</button>
+    <button class="nav-icon-btn desktop-only-btn" id="btn-mode-toggle" onclick="toggleViewMode()" title="Switch between Slide Deck and Scroll View">👁️ Slides</button>
     <button class="theme-toggle-btn" id="btn-theme-toggle" onclick="toggleTheme()" title="Toggle Light / Dark Theme">🌙</button>
   </div>
 </header>
@@ -1486,7 +1578,7 @@ body.mode-scroll .presentation-slide {
     </div>
     
         <div class="card s7">
-          <table class="comparison-table">
+          <div class="table-responsive"><table class="comparison-table">
             <thead>
               <tr><th>Filter</th><th>Formula $H(u,v)$</th><th>Value at $D=D_0$</th><th>Ringing Artefacts</th><th>Transition Sharpness</th></tr>
             </thead>
@@ -1495,7 +1587,7 @@ body.mode-scroll .presentation-slide {
               <tr><td><strong>Butterworth (BLPF)</strong></td><td>$\dfrac{1}{1 + [D/D_0]^{2n}}$</td><td>$0.5$ (Half power)</td><td>None at $n=1,2$; rises with $n$</td><td>Adjustable via order $n$</td></tr>
               <tr><td><strong>Gaussian (GLPF)</strong></td><td>$e^{-D^2 / (2D_0^2)}$</td><td>$e^{-0.5} \approx 0.607$</td><td><strong>None (Zero ringing)</strong></td><td>Smooth exponential bell</td></tr>
             </tbody>
-          </table>
+          </table></div>
 
           <div class="grid-2" style="margin-top:20px;">
             <div>
@@ -1792,7 +1884,7 @@ body.mode-scroll .presentation-slide {
             </div>
             <div>
               <h3>⚖️ Frequency Domain vs Spatial Domain</h3>
-              <table class="comparison-table">
+              <div class="table-responsive"><table class="comparison-table">
                 <thead>
                   <tr><th>Aspect</th><th>Spatial Domain</th><th>Frequency Domain</th></tr>
                 </thead>
@@ -1803,7 +1895,7 @@ body.mode-scroll .presentation-slide {
                   <tr><td>Speed (Large mask)</td><td>Very slow</td><td>Extremely fast via FFT</td></tr>
                   <tr><td>Periodic Noise</td><td>Difficult to eliminate</td><td>Trivial via Band-Reject/Notch</td></tr>
                 </tbody>
-              </table>
+              </table></div>
             </div>
           </div>
         </div>
@@ -1909,7 +2001,7 @@ body.mode-scroll .presentation-slide {
             </div>
             <div>
               <h4 style="color:var(--accent-purple);margin:0 0 10px;">🔑 Master Noise-to-Filter Table (Memorize!):</h4>
-              <table class="comparison-table">
+              <div class="table-responsive"><table class="comparison-table">
                 <thead>
                   <tr><th>Noise Type</th><th>Best Spatial Filter</th><th>Why it Works</th></tr>
                 </thead>
@@ -1922,7 +2014,7 @@ body.mode-scroll .presentation-slide {
                   <tr><td><strong>Mixed (Gaussian + Salt & Pepper)</strong></td><td>Alpha-Trimmed Mean Filter</td><td>Trims impulse outliers, averages Gaussian residue</td></tr>
                   <tr><td><strong>Periodic</strong></td><td>Band-Reject / Notch Filter</td><td>Frequency spikes removed in Fourier domain</td></tr>
                 </tbody>
-              </table>
+              </table></div>
             </div>
           </div>
         </div>
@@ -2418,7 +2510,7 @@ body.mode-scroll .presentation-slide {
     </div>
     
         <div class="card s7">
-          <table class="comparison-table">
+          <div class="table-responsive"><table class="comparison-table">
             <thead>
               <tr><th>Concept</th><th>Formula / Transfer Function</th><th>Key Notes for Exam</th></tr>
             </thead>
@@ -2438,7 +2530,7 @@ body.mode-scroll .presentation-slide {
               <tr><td><strong>High-Boost</strong></td><td>$H_{hfe} = a + b \cdot H_{hp}(u,v)$</td><td>$a \approx 0.5$ preserves DC, $b \approx 2$ sharpens</td></tr>
               <tr><td><strong>FFT Complexity</strong></td><td>$\mathcal{O}(N \log_2 N)$</td><td>$100\times - 600\times$ faster than $\mathcal{O}(N^2)$</td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         
   </div>
@@ -2455,7 +2547,7 @@ body.mode-scroll .presentation-slide {
     </div>
     
         <div class="card s8">
-          <table class="comparison-table">
+          <div class="table-responsive"><table class="comparison-table">
             <thead>
               <tr><th>Filter</th><th>Mathematical Formula</th><th>Best Used For / Exam Gotchas</th></tr>
             </thead>
@@ -2472,7 +2564,7 @@ body.mode-scroll .presentation-slide {
               <tr><td><strong>Adaptive Median</strong></td><td>Level A (window size) + Level B (pixel replace)</td><td>Dense impulse noise ($>20\%-50\%$); preserves thin lines</td></tr>
               <tr><td><strong>Band-Reject</strong></td><td>$H_{br}(u,v)$ in Fourier domain</td><td><strong>Periodic noise</strong> (removes conjugate frequency spikes)</td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         
   </div>
@@ -2817,6 +2909,7 @@ body.mode-scroll .presentation-slide {
       <span class="key-badge">G</span>
       <span>to jump</span>
     </div>
+    <div class="mobile-bottom-counter" id="mobile-counter">1 / 38</div>
   </div>
 
   <button class="nav-icon-btn primary" id="btn-next-bottom" onclick="nextSlide()">Next ▶</button>
@@ -2843,6 +2936,8 @@ document.documentElement.setAttribute('data-theme', currentTheme);
 function updateThemeIcon() {
   const btn = document.getElementById('btn-theme-toggle');
   if (btn) btn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+  const metaTheme = document.getElementById('theme-color-meta');
+  if (metaTheme) metaTheme.setAttribute('content', currentTheme === 'light' ? '#ffffff' : '#0a0c16');
 }
 updateThemeIcon();
 
@@ -2907,6 +3002,7 @@ function goToSlide(n, updateHistory = true) {
   window.scrollTo({ top: 0, behavior: 'instant' });
 
   document.getElementById('top-counter-badge').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+  document.getElementById('mobile-counter').textContent = `${currentSlide} / ${totalSlides}`;
   document.getElementById('jump-slide-input').value = currentSlide;
 
   const currentData = slidesData[currentSlide - 1];
@@ -2919,9 +3015,12 @@ function goToSlide(n, updateHistory = true) {
   const progressPercent = (currentSlide / totalSlides) * 100;
   document.getElementById('progress-bar').style.width = progressPercent + '%';
 
-  document.getElementById('btn-prev-top').disabled = (currentSlide === 1);
+  const prevTop = document.getElementById('btn-prev-top');
+  const nextTop = document.getElementById('btn-next-top');
+  if (prevTop) prevTop.disabled = (currentSlide === 1);
+  if (nextTop) nextTop.disabled = (currentSlide === totalSlides);
+  
   document.getElementById('btn-prev-bottom').disabled = (currentSlide === 1);
-  document.getElementById('btn-next-top').disabled = (currentSlide === totalSlides);
   document.getElementById('btn-next-bottom').disabled = (currentSlide === totalSlides);
 
   document.querySelectorAll('.index-slide-item').forEach(el => el.classList.remove('active'));
@@ -2969,8 +3068,10 @@ function toggleViewMode() {
   isScrollView = !isScrollView;
   document.body.classList.toggle('mode-scroll', isScrollView);
   const btn = document.getElementById('btn-mode-toggle');
-  btn.textContent = isScrollView ? '📄 Scroll View' : '👁️ Slides View';
-  btn.classList.toggle('primary', isScrollView);
+  if (btn) {
+    btn.textContent = isScrollView ? '📄 Scroll View' : '👁️ Slides View';
+    btn.classList.toggle('primary', isScrollView);
+  }
   if (!isScrollView) {
     goToSlide(currentSlide);
   }
@@ -3016,6 +3117,36 @@ window.addEventListener('keydown', (e) => {
     if (overlay.classList.contains('open')) overlay.classList.remove('open');
   }
 });
+
+// ─── MOBILE TOUCH SWIPE GESTURES ───
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  touchEndY = e.changedTouches[0].screenY;
+  handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+  // Trigger if horizontal movement > 45px and predominantly horizontal (not vertical scroll)
+  if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+    if (diffX < 0) {
+      nextSlide(); // Swiped left -> next slide
+    } else {
+      prevSlide(); // Swiped right -> prev slide
+    }
+  }
+}
 
 // ─── 7x7 NUMERICAL WORKSHOP LOGIC ───
 const rawGrid7x7 = [
@@ -3091,29 +3222,29 @@ function updateWorkshopDetails() {
   const detailsCard = document.getElementById('window-details-card');
   if (detailsCard) {
     detailsCard.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
-        <h4 style="margin:0;font-size:17px;font-weight:700;color:${currentMode==='salt'?'var(--accent-pink)':'var(--accent-purple)'};">
-          Active Neighborhood: Center Pixel (${centerCol}, ${centerRow}) = ${targetVal} [${noiseType}]
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+        <h4 style="margin:0;font-size:15.5px;font-weight:700;color:${currentMode==='salt'?'var(--accent-pink)':'var(--accent-purple)'};">
+          Center Pixel (${centerCol}, ${centerRow}) = ${targetVal} [${noiseType}]
         </h4>
-        <span class="category-pill ${currentMode==='salt'?'s7-tag':'s8-tag'}">Window Size: 3×3 (mn = 9)</span>
+        <span class="category-pill ${currentMode==='salt'?'s7-tag':'s8-tag'}">Window: 3×3 (mn = 9)</span>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:14px;">
         <div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;font-weight:700;">3×3 Spatial Window Matrix:</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--bg-secondary);padding:12px;border-radius:8px;border:1px solid var(--border);line-height:1.7;">
+          <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:5px;font-weight:700;">3×3 Spatial Window Matrix:</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg-secondary);padding:10px;border-radius:8px;border:1px solid var(--border);line-height:1.6;">
             [ ${matrixRows[0].map(v => v===targetVal?`<strong style="color:var(--accent-orange);">${v}</strong>`:v).join(', ')} ]<br>
             [ ${matrixRows[1].map(v => v===targetVal?`<strong style="color:var(--accent-orange);">${v}</strong>`:v).join(', ')} ]<br>
             [ ${matrixRows[2].map(v => v===targetVal?`<strong style="color:var(--accent-orange);">${v}</strong>`:v).join(', ')} ]
           </div>
         </div>
         <div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;font-weight:700;">Sorted Gray Levels (Ascending):</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg-secondary);padding:12px;border-radius:8px;border:1px solid var(--border);line-height:1.7;">
-            [ ${sortedVals.map((v, i) => i===4?`<strong style="color:var(--accent-green);border-bottom:2px solid var(--accent-green);">${v} (Median)</strong>`: (v===targetVal?`<strong style="color:var(--accent-pink);">${v} (Noise)</strong>`:v)).join(', ')} ]
+          <div style="font-size:11.5px;color:var(--text-muted);margin-bottom:5px;font-weight:700;">Sorted Gray Levels:</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;background:var(--bg-secondary);padding:10px;border-radius:8px;border:1px solid var(--border);line-height:1.6;word-break:break-all;">
+            [ ${sortedVals.map((v, i) => i===4?`<strong style="color:var(--accent-green);border-bottom:2px solid var(--accent-green);">${v} (Med)</strong>`: (v===targetVal?`<strong style="color:var(--accent-pink);">${v}</strong>`:v)).join(', ')} ]
           </div>
-          <div style="font-size:11.5px;color:var(--text-muted);margin-top:6px;font-weight:600;">
-            Sum = ${sumVal} &bull; Min = ${sortedVals[0]} &bull; Max = ${sortedVals[8]} &bull; Median = ${sortedVals[4]}
+          <div style="font-size:11px;color:var(--text-muted);margin-top:5px;font-weight:600;">
+            Sum = ${sumVal} &bull; Min = ${sortedVals[0]} &bull; Max = ${sortedVals[8]} &bull; Med = ${sortedVals[4]}
           </div>
         </div>
       </div>

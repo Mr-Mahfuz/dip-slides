@@ -383,7 +383,7 @@ slides_data = [
         "subtitle": "Side-by-side comparison table and practical applications from the lecture slides",
         "content": r"""
         <div class="card s7">
-          <table class="comparison-table">
+          <div class="table-responsive"><table class="comparison-table">
             <thead>
               <tr><th>Filter</th><th>Formula $H(u,v)$</th><th>Value at $D=D_0$</th><th>Ringing Artefacts</th><th>Transition Sharpness</th></tr>
             </thead>
@@ -392,7 +392,7 @@ slides_data = [
               <tr><td><strong>Butterworth (BLPF)</strong></td><td>$\dfrac{1}{1 + [D/D_0]^{2n}}$</td><td>$0.5$ (Half power)</td><td>None at $n=1,2$; rises with $n$</td><td>Adjustable via order $n$</td></tr>
               <tr><td><strong>Gaussian (GLPF)</strong></td><td>$e^{-D^2 / (2D_0^2)}$</td><td>$e^{-0.5} \approx 0.607$</td><td><strong>None (Zero ringing)</strong></td><td>Smooth exponential bell</td></tr>
             </tbody>
-          </table>
+          </table></div>
 
           <div class="grid-2" style="margin-top:20px;">
             <div>
@@ -654,7 +654,7 @@ slides_data = [
             </div>
             <div>
               <h3>⚖️ Frequency Domain vs Spatial Domain</h3>
-              <table class="comparison-table">
+              <div class="table-responsive"><table class="comparison-table">
                 <thead>
                   <tr><th>Aspect</th><th>Spatial Domain</th><th>Frequency Domain</th></tr>
                 </thead>
@@ -665,7 +665,7 @@ slides_data = [
                   <tr><td>Speed (Large mask)</td><td>Very slow</td><td>Extremely fast via FFT</td></tr>
                   <tr><td>Periodic Noise</td><td>Difficult to eliminate</td><td>Trivial via Band-Reject/Notch</td></tr>
                 </tbody>
-              </table>
+              </table></div>
             </div>
           </div>
         </div>
@@ -756,7 +756,7 @@ slides_data = [
             </div>
             <div>
               <h4 style="color:var(--accent-purple);margin:0 0 10px;">🔑 Master Noise-to-Filter Table (Memorize!):</h4>
-              <table class="comparison-table">
+              <div class="table-responsive"><table class="comparison-table">
                 <thead>
                   <tr><th>Noise Type</th><th>Best Spatial Filter</th><th>Why it Works</th></tr>
                 </thead>
@@ -769,7 +769,7 @@ slides_data = [
                   <tr><td><strong>Mixed (Gaussian + Salt & Pepper)</strong></td><td>Alpha-Trimmed Mean Filter</td><td>Trims impulse outliers, averages Gaussian residue</td></tr>
                   <tr><td><strong>Periodic</strong></td><td>Band-Reject / Notch Filter</td><td>Frequency spikes removed in Fourier domain</td></tr>
                 </tbody>
-              </table>
+              </table></div>
             </div>
           </div>
         </div>
@@ -1205,7 +1205,7 @@ slides_data = [
         "subtitle": "Quick-reference table of every frequency domain formula for exam day",
         "content": r"""
         <div class="card s7">
-          <table class="comparison-table">
+          <div class="table-responsive"><table class="comparison-table">
             <thead>
               <tr><th>Concept</th><th>Formula / Transfer Function</th><th>Key Notes for Exam</th></tr>
             </thead>
@@ -1225,7 +1225,7 @@ slides_data = [
               <tr><td><strong>High-Boost</strong></td><td>$H_{hfe} = a + b \cdot H_{hp}(u,v)$</td><td>$a \approx 0.5$ preserves DC, $b \approx 2$ sharpens</td></tr>
               <tr><td><strong>FFT Complexity</strong></td><td>$\mathcal{O}(N \log_2 N)$</td><td>$100\times - 600\times$ faster than $\mathcal{O}(N^2)$</td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         """
     },
@@ -1237,7 +1237,7 @@ slides_data = [
         "subtitle": "Quick-reference table of every image restoration and noise filter formula",
         "content": r"""
         <div class="card s8">
-          <table class="comparison-table">
+          <div class="table-responsive"><table class="comparison-table">
             <thead>
               <tr><th>Filter</th><th>Mathematical Formula</th><th>Best Used For / Exam Gotchas</th></tr>
             </thead>
@@ -1254,7 +1254,7 @@ slides_data = [
               <tr><td><strong>Adaptive Median</strong></td><td>Level A (window size) + Level B (pixel replace)</td><td>Dense impulse noise ($>20\%-50\%$); preserves thin lines</td></tr>
               <tr><td><strong>Band-Reject</strong></td><td>$H_{br}(u,v)$ in Fourier domain</td><td><strong>Periodic noise</strong> (removes conjugate frequency spikes)</td></tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
         """
     },

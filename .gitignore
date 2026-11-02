@@ -1,0 +1,11 @@
+# Dependencies and logs
+__pycache__/
+*.pyc
+*.log
+
+# Raw large PDFs (optional, un-comment if you want to push without original slide PDFs)
+# dip slide 7.pdf
+# dip slide 8.pdf
+
+# Vercel
+.vercel/

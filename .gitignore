@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 *.log
+tmp/
 
 # Raw large PDFs (optional, un-comment if you want to push without original slide PDFs)
 # dip slide 7.pdf
